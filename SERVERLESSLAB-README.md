@@ -2,7 +2,9 @@
 
 ## Lab Overview And High Level Design
 
-Let's start with the ![High Level Design](./images/high-level-design.jpg). An Amazon API Gateway is a collection of resources and methods. For this tutorial, you create one resource (DynamoDBManager) and define one method (POST) on it. The method is backed by a Lambda function (LambdaFunctionOverHttps). That is, when you call the API through an HTTPS endpoint, Amazon API Gateway invokes the Lambda function.
+Let's start with the High Level Design.
+![High Level Design](./images/high-level-design.jpg). 
+An Amazon API Gateway is a collection of resources and methods. For this tutorial, you create one resource (DynamoDBManager) and define one method (POST) on it. The method is backed by a Lambda function (LambdaFunctionOverHttps). That is, when you call the API through an HTTPS endpoint, Amazon API Gateway invokes the Lambda function.
 
 The POST method on the DynamoDBManager resource supports the following DynamoDB operations:
 
@@ -52,13 +54,13 @@ To create an execution role
 1. Open the roles page in the IAM console.
 2. Choose Create role.
 3. Create a role with the following properties.
-    *Trusted entity – Lambda.
-    *Role name – **lambda-apigateway-role**.
-    *Permissions – Custom policy with permission to DynamoDB and CloudWatch Logs. This custom policy has the permissions that the function needs to write data to DynamoDB and upload logs. Note the Amazon Resource Name (ARN) of the role for later use.
+    * Trusted entity – Lambda.
+    * Role name – **lambda-apigateway-role**.
+    * Permissions – Custom policy with permission to DynamoDB and CloudWatch Logs. This custom policy has the permissions that  the function needs to write data to DynamoDB and upload logs. Note the Amazon Resource Name (ARN) of the role for later use.
     ```json
     {
-  "Version": "2012-10-17",
-  "Statement": [
+    "Version": "2012-10-17",
+    "Statement": [
     {
       "Sid": "Stmt1428341300017",
       "Action": [
@@ -82,8 +84,8 @@ To create an execution role
       ],
       "Effect": "Allow"
     }
-  ]
-}
+    ]
+    }
     ```
 
 ### Create Lambda Function
