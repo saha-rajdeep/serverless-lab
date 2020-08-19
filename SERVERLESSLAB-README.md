@@ -3,7 +3,7 @@
 ## Lab Overview And High Level Design
 
 Let's start with the High Level Design.
-![High Level Design](./images/high-level-design.jpg). 
+![High Level Design](./images/high-level-design.jpg)
 An Amazon API Gateway is a collection of resources and methods. For this tutorial, you create one resource (DynamoDBManager) and define one method (POST) on it. The method is backed by a Lambda function (LambdaFunctionOverHttps). That is, when you call the API through an HTTPS endpoint, Amazon API Gateway invokes the Lambda function.
 
 The POST method on the DynamoDBManager resource supports the following DynamoDB operations:
@@ -44,8 +44,6 @@ The following is a sample request payload for a DynamoDB read item operation:
 
 ## Setup
 
-To follow the procedures in this guide, you will need a command line terminal or shell to run commands. Alternatively, you can use Postman to execute APIs
-
 ### Create Lambda IAM Role 
 Create the execution role that gives your function permission to access AWS resources.
 
@@ -56,7 +54,7 @@ To create an execution role
 3. Create a role with the following properties.
     * Trusted entity – Lambda.
     * Role name – **lambda-apigateway-role**.
-    * Permissions – Custom policy with permission to DynamoDB and CloudWatch Logs. This custom policy has the permissions that  the function needs to write data to DynamoDB and upload logs. Note the Amazon Resource Name (ARN) of the role for later use.
+    * Permissions – Custom policy with permission to DynamoDB and CloudWatch Logs. This custom policy has the permissions that  the function needs to write data to DynamoDB and upload logs. 
     ```json
     {
     "Version": "2012-10-17",
@@ -92,10 +90,15 @@ To create an execution role
 
 **To create the function**
 1. Click "Create function" in AWS Lambda Console
+
 ![Create function](./images/create-lambda.jpg)
+
 2. Select "Author from scratch". Use name **LambdaFunctionOverHttps** , select **Python 3.7** as Runtime. Under Permissions, select "Use an existing role", and select **lambda-apigateway-role** that we created, from the drop down
+
 3. Click "Create function"
+
 ![Lambda basic information](./images/lambda-basic-info.jpg)
+
 4. Replace the boilerplate coding with the following code snippet and click "Save"
 
 **Example Python Code**
@@ -141,9 +144,11 @@ def lambda_handler(event, context):
 
 ### Test Lambda Function
 
-Let's test our newly created function. We haven't created DynamoDB and the APi yet, so we'll do a sample echo operation. The function should output whatever input we pass.
+Let's test our newly created function. We haven't created DynamoDB and the API yet, so we'll do a sample echo operation. The function should output whatever input we pass.
 1. Click the arrow on "Select a test event" and click "Configure test events"
+
 ![Configure test events](./images/lambda-test-event-1.jpg)
+
 2. Paste the following JSON into the event. The field "operation" dictates what the lambda function will perform. In this case, it'd simply return the payload from input event as output. Click "Create" to save
 ```json
 {
@@ -155,7 +160,9 @@ Let's test our newly created function. We haven't created DynamoDB and the APi y
 }
 ```
 ![Save test event](./images/save-test-event.jpg)
+
 3. Click "Test", and it will execute the test event. You should see the output in the console
+
 ![Execute test event](./images/execute-test.jpg)
 
 We're all set to create DynamoDB table and an API using our lambda as backend!
@@ -181,11 +188,17 @@ Create the DynamoDB table that the Lambda function uses.
 **To create the API**
 1. Go to API Gateway console
 2. Click Create API
+
 ![create API](./images/create-api-button.jpg) 
+
 3. Scroll down and select "Build" for REST API
+
 ![Build REST API](./images/build-rest-api.jpg) 
+
 4. Give the API name as "DynamoDBOperations", keep everything as is, click "Create API"
+
 ![Create REST API](./images/create-new-api.jpg)
+
 5. Each API is collection of resources and methods that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services. Typically, API resources are organized in a resource tree according to the application logic. At this time you only have the root resource, but let's add a resource next 
 
 Click "Actions", then click "Create Resource"
@@ -268,6 +281,6 @@ In this step, you deploy the API that you created to a stage called prod.
 ```
 ![List Dynamo Items](./images/dynamo-item-list.jpg)
 
-
+We have successfully created a serverless API using API Gateway, Lambda, and DynamoDB!
 
 
