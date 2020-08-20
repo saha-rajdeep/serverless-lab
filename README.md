@@ -283,4 +283,21 @@ In this step, you deploy the API that you created to a stage called prod.
 
 We have successfully created a serverless API using API Gateway, Lambda, and DynamoDB!
 
+## Cleanup
 
+Let's clean up the resources we have created for this lab.
+
+
+### Cleaning up DynamoDB
+
+To delete the table, from DynamoDB console, select the table "lambda-apigateway", and click "Delete table"
+
+![Delete Dynamo](./images/delete-dynamo.jpg)
+
+To delete the Lambda, from the Lambda console, select lambda "LambdaFunctionOverHttps", click "Actions", then click Delete 
+
+![Delete Lambda](./images/delete-lambda.jpg)
+
+To delete the API we created, in API gateway console, under APIs, select "DynamoDBOperations" API, click "Actions", then "Delete"
+
+![Delete API](./images/delete-api.jpg)
