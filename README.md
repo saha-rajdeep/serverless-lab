@@ -44,17 +44,11 @@ The following is a sample request payload for a DynamoDB read item operation:
 
 ## Setup
 
-### Create Lambda IAM Role 
-Create the execution role that gives your function permission to access AWS resources.
-
-To create an execution role
-
-1. Open the roles page in the IAM console.
-2. Choose Create role.
-3. Create a role with the following properties.
-    * Trusted entity – Lambda.
-    * Role name – **lambda-apigateway-role**.
-    * Permissions – Custom policy with permission to DynamoDB and CloudWatch Logs. This custom policy has the permissions that  the function needs to write data to DynamoDB and upload logs. 
+### Create Custom Permissions Policy that will be used by the Lambda IAM Role below
+1. Go to IAM Console. Under Access Management, click on "Policies".
+2. Click "Create policy"
+3. Click "JSON"
+4. In the policy editor, paste the following:
     ```json
     {
     "Version": "2012-10-17",
@@ -85,6 +79,25 @@ To create an execution role
     ]
     }
     ```
+5. Click Next.
+6. Set policy name as **lambda-apigateway-policy**
+5. Click "Create policy".
+
+### Create Lambda IAM Role 
+Create the execution role that gives your function permission to access AWS resources.
+
+To create an execution role
+
+1. Open the roles page in the IAM console.
+2. Click Create role.
+3. Create a role with the following properties.
+    * Trusted entity type – AWS Service
+    * Use Case > Service or use case - Select Lambda. Click Next.
+    * On Add Permissions page, search for policy name you created in the previous step.
+    * Select the checkbox for the policy. Click Next. 
+    * Role name – **lambda-apigateway-role**.
+    * Click "Create role". 
+       
 
 ### Create Lambda Function
 
