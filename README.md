@@ -44,40 +44,40 @@ The following is a sample request payload for a DynamoDB read item operation:
 
 ## Setup
 
-### Create Custom Permissions Policy that will be used by the Lambda IAM Role below
+### Create Custom Permissions Policy that will be used by the Lambda execution role below
 1. Go to IAM Console. Under Access Management, click on "Policies".
 2. Click "Create policy"
 3. Click "JSON"
 4. In the policy editor, paste the following:
     ```json
     {
-    "Version": "2012-10-17",
-    "Statement": [
-    {
-      "Sid": "Stmt1428341300017",
-      "Action": [
-        "dynamodb:DeleteItem",
-        "dynamodb:GetItem",
-        "dynamodb:PutItem",
-        "dynamodb:Query",
-        "dynamodb:Scan",
-        "dynamodb:UpdateItem"
-      ],
-      "Effect": "Allow",
-      "Resource": "*"
-    },
-    {
-      "Sid": "",
-      "Resource": "*",
-      "Action": [
-        "logs:CreateLogGroup",
-        "logs:CreateLogStream",
-        "logs:PutLogEvents"
-      ],
-      "Effect": "Allow"
-    }
-    ]
-    }
+		"Version": "2012-10-17",
+		"Statement": [
+			{
+				"Action": [
+					"dynamodb:DeleteItem",
+					"dynamodb:GetItem",
+					"dynamodb:PutItem",
+					"dynamodb:Query",
+					"dynamodb:Scan",
+					"dynamodb:UpdateItem"
+				],
+				"Effect": "Allow",
+				"Resource": "*",
+				"Sid": "stmt_ddb_permissions"
+			},
+			{
+				"Action": [
+					"logs:CreateLogGroup",
+					"logs:CreateLogStream",
+					"logs:PutLogEvents"
+				],
+				"Effect": "Allow",
+				"Resource": "*",
+				"Sid": "stmt_cwlogs_permissions"
+			}
+		]
+	}
     ```
 5. Click Next.
 6. Set policy name as **lambda-apigateway-policy**
