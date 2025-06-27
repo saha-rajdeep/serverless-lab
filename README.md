@@ -83,7 +83,7 @@ We need to create a custom policy for least privilege
     }
     ]
     }
-    ```
+```
 4. Give name "lambda-custom-policy", and click "Create policy" on botom right
 
 ### Create Lambda IAM Role 
