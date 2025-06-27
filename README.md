@@ -209,21 +209,19 @@ Create the DynamoDB table that the Lambda function uses.
 
 ![Create REST API](./images/create-new-api.jpg)
 
-5. Each API is collection of resources and methods that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services. Typically, API resources are organized in a resource tree according to the application logic. At this time you only have the root resource, but let's add a resource next 
-
-Click "Create Resource"
+5. Each API is collection of resources and methods that are integrated with backend HTTP endpoints, Lambda functions, or other AWS services. Typically, API resources are organized in a resource tree according to the application logic. At this time you only have the root resource, but let's add a resource next. Click "Create Resource"
 
 6. Input "DynamoDBManager" in the Resource Name. Click "Create Resource"
 
 ![Create resource](./images/create-resource-name.jpg)
 
-7. Let's create a POST Method for our API. With the "/dynamodbmanager" resource selected, Click "Actions" again and click "Create Method". 
+7. Let's create a POST Method for our API. With the "/dynamodbmanager" resource selected, click "Create Method". 
 
 ![Create resource method](./images/create-method-1.jpg)
 
 8. Select "POST" from drop down.
 
-9. Integration type should be pre-selected as "Lambda function". Select "LambdaFunctionOverHttps" function that we created earlier. As you start typing the name, your function name will show up.Select and click "Create method". 
+9. Integration type should be pre-selected as "Lambda function". Select "LambdaFunctionOverHttps" function that we created earlier. As you start typing the name, your function name will show up.Select the function, scroll down and click "Create method". 
 
 ![Create lambda integration](./images/create-lambda-integration.jpg)
 
