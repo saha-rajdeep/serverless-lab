@@ -271,6 +271,8 @@ In this step, you deploy the API that you created to a stage called prod.
 
 ![Dynamo Item](./images/dynamo-item.jpg)
 
+![Dynamo Itemshow](./images/dynamo-show-item.jpg)
+
 4. To get all the inserted items from the table, we can use the "list" operation of Lambda using the same API. Pass the following JSON to the API, and it will return all the items from the Dynamo table
 
 ```json
