@@ -55,7 +55,7 @@ We need to create a custom policy for least privilege
 ![Create policy](./images/create-policy.jpg)
 
 ```json
-    {
+{
     "Version": "2012-10-17",
     "Statement": [
     {
